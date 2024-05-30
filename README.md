@@ -1,6 +1,14 @@
 # iDocsMarkdown
 iDocsMarkdown is a dynamic, single-page documentation engine built using the iDocs template and enhanced with a robust backend using ASP.NET Core. This powerful tool leverages Bootstrap 4, Markdig for Markdown processing, and HtmlAgilityPack for HTML parsing, enabling you to create comprehensive offline and online documentation for your themes, templates, plugins, and software.
 
+Basically this app drives off a document directory of Markdown files that look like this:
+
+![Markdown Code](https://raw.githubusercontent.com/SparkInnovationsCorp/iDocsMarkdown/main/wwwroot/images/markdown.jpg)
+
+And it dynamically builds a beautifuly navigatable web site like so (perfect for documentation):
+
+![Dynamic HTML Display](https://raw.githubusercontent.com/SparkInnovationsCorp/iDocsMarkdown/main/wwwroot/images/html.jpg)
+
 ## How to Use
 Download, compile and publish under Visual Studios 2022 into IIS or compatable web host.  Then simply update the MD docs in the MD folder.
 
