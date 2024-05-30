@@ -1,5 +1,5 @@
 # iDocsMarkdown
-iDocsMarkdown is a dynamic, single-page documentation engine built using the iDocs template and enhanced with a robust backend using ASP.NET Core. This powerful tool leverages Bootstrap 4, Markdig for Markdown processing, and HtmlAgilityPack for HTML parsing, enabling you to create comprehensive offline and online documentation for your themes, templates, plugins, and software.
+iDocsMarkdown is a dynamic, multi-page documentation engine built using the iDocs template and enhanced with a robust backend using ASP.NET Core. This powerful tool leverages Bootstrap 4, Markdig for Markdown processing, and HtmlAgilityPack for HTML parsing, enabling you to create comprehensive navigatable online documentation for technical documentation, books, or whatever your heart desires.  And its fully compatable with OpenAI's ChatGPT copied output.  You are welcome!  Project is ASP.NET 6.0 Core MVC.  Build with Visual Studios 2022.
 
 ## What It Does
 Essentially, this application operates on a directory of Markdown files, structured like this:
