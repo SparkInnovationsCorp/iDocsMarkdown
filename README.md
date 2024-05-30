@@ -1,36 +1,41 @@
-# iDocs
-iDocs is free one page documentation html template built with Bootstrap 4. Which helps you to create your offline and online documentation for your themes, templates, plugins and software.
+# iDocsMarkdown
+iDocsMarkdown is a dynamic, single-page documentation engine built using the iDocs template and enhanced with a robust backend using ASP.NET Core. This powerful tool leverages Bootstrap 4, Markdig for Markdown processing, and HtmlAgilityPack for HTML parsing, enabling you to create comprehensive offline and online documentation for your themes, templates, plugins, and software.
 
-## Overview:
-<a href="https://harnishdesign.net/idocs-free-one-page-documentation-html-template.html">Template Overview Page</a>
-
-## Demo:
-Click this link for a live demo : <a href="https://harnishdesign.net/demo/html/idocs/demos.html">View a Demo here</a>
-
-## How to Use:
-You can read details documentation here - <a href="https://harnishdesign.net/demo/html/idocs/help/">View Documentation Here</a>
+## How to Use
+Download, compile and publish under Visual Studios 2022 into IIS or compatable web host.  Then simply update the MD docs in the MD folder.
 
 ## Bugs and Issues
-Have an issue with this template? <a href="https://github.com/harnishdesign/iDocs/issues">Open a new issue here</a>
+Have an issue with this engine? [Open a new issue here](https://github.com/sparkinnovationscorp/iDocsMarkdown/issues)
 
-OR Leave a comment on the <a href="https://harnishdesign.net/idocs-free-one-page-documentation-html-template.html">Template Overview Page at Harnish Design</a> for general inquiry.
+OR email me at support@sparkinnovationscorp.com.
 
-## Credits:
-<ul>
-<li><a href="https://getbootstrap.com/">Bootstrap 4</a></li>
-<li><a href="http://www.jquery.com/">jQuery</a></li>
-<li><a href="http://gsgd.co.uk/sandbox/jquery/easing/">jQuery easing</a></li>
-<li><a href="http://dimsemenov.com/plugins/magnific-popup/">Magnific Popup</a></li>
-<li><a href="https://fontawesome.com/">Font Awesome</a></li>
-<li><a href="https://highlightjs.org/">Highlight Js</a></li>
-<li><a href="https://unsplash.com/">Unsplash</a></li>
-</ul>
+## Credits
+- [Harnish Design](https://harnishdesign.net/)
+- [Bootstrap 4](https://getbootstrap.com/)
+- [jQuery](http://www.jquery.com/)
+- [jQuery easing](http://gsgd.co.uk/sandbox/jquery/easing/)
+- [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/)
+- [Font Awesome](https://fontawesome.com/)
+- [Highlight Js](https://highlightjs.org/)
+- [Unsplash](https://unsplash.com/)
+- [Markdig](https://github.com/xoofx/markdig)
+- [HtmlAgilityPack](https://html-agility-pack.net/)
 
-## Created By:
-<a href="https://www.harnishdesign.net/">Harnish Design</a>
+## Created By
+[Jason Bramble with Spark Innovations Corp](https://www.sparkinnovationscorp.com/)
+
+##Kudos to the Original Author
+A huge kudos and heartfelt thanks to [Harnish Design](https://harnishdesign.net/) for creating the original iDocs template. Their work laid the foundation for this enhanced documentation engine, making it possible to create beautifully structured and easy-to-navigate documentation.
 
 ## Donations & Support
-My Brain needs two urgent coffees to continue working. Buy one or two coffees for me here: https://opencollective.com/idocs
+I dont need anything.  Just enjoy the free app!
 
-## License:
-See the <a href="https://github.com/harnishdesign/iDocs/blob/main/LICENSE">LICENSE</a> file for license rights and limitations (MIT).
+## To-Do List
+1. **Implement Caching for Enhanced Performance**  
+   Plan to integrate caching mechanisms based on markdown file modification dates to significantly boost performance and reduce load times.
+   
+2. **Expand Theme Support**  
+   Aim to include support for various other iDocs theme versions, providing users with more flexibility and customization options for their documentation needs.
+
+## License
+See the [LICENSE](https://github.com/SparkInnovationsCorp/iDocsMarkdown/blob/main/LICENSE) file for license rights and limitations (MIT). Additionally, Jason Bramble with Spark Innovations Corp grants the same rights for the application and code under the MIT License:

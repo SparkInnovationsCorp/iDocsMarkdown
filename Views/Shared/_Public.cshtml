@@ -1,0 +1,194 @@
+﻿@{
+    void RenderTopicItems(List<NavItem> navItems)
+    {
+        <ul class="dropdown-menu">
+            @foreach (var navItem in navItems)
+            {
+                @if (navItem.NavItems == null)
+                {
+                    <li><a class="dropdown-item" title="@(navItem.Title)" href="@(navItem.Target)">@(navItem.Title.Length <= 28 ? navItem.Title : navItem.Title.Substring(0, 28) + "...")</a></li>
+                }
+                else
+                {
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" title="@(navItem.Title)" href="@(navItem.Target)">@(navItem.Title.Length <= 28 ? navItem.Title : navItem.Title.Substring(0, 28) + "...")</a>
+                        @{
+                            RenderTopicItems(navItem.NavItems);
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    }
+
+    void RenderNavItems(List<NavItem> navItems)
+    {
+        <ul class="nav flex-column">
+            @foreach (var navItem in navItems)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="@("#" + navItem.Target)">@navItem.Title</a>
+                    @if (navItem.NavItems != null && navItem.NavItems.Count > 0)
+                    {
+                        RenderNavItems(navItem.NavItems);
+                    }
+                </li>
+            }
+        </ul>
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <link href="images/favicon.png" rel="icon" />
+    <title>@ViewBag.PageTitle | ViewBag.SiteName</title>
+    <meta name="description" content="@ViewBag.PageDescription">
+    <meta name="keywords" content="@ViewBag.PageKeywords">
+    <meta name="author" content="harnishdesign.net">
+
+    <!-- Stylesheet
+    ============================== -->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/magnific-popup/magnific-popup.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/highlight.js/styles/github.css" />
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+</head>
+
+<body data-spy="scroll" data-target=".idocs-navigation" data-offset="125">
+
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+    <!-- Document Wrapper
+    =============================== -->
+    <div id="main-wrapper">
+
+        <!-- Header
+        ============================ -->
+        <header id="header" class="sticky-top">
+            <!-- Navbar -->
+            <nav class="primary-menu navbar navbar-expand-lg bg-dark navbar-text-light navbar-dropdown-dark border-0">
+                <div class="container-fluid">
+                    <!-- Sidebar Toggler -->
+                    <button id="sidebarCollapse" class="navbar-toggler d-block d-md-none" type="button"><span></span><span class="w-75"></span><span class="w-50"></span></button>
+
+                    <!-- Logo -->
+                    <a class="logo ml-md-3" href="index.html" title="iDocs Template"> <img src="/images/logo-light.png" alt="iDocs Template" /> </a>
+                    <span class="text-2 text-light ml-2">v1.0</span>
+                    <!-- Logo End -->
+                    <!-- Navbar Toggler -->
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#header-nav"><span></span><span></span><span></span></button>
+
+                    <div id="header-nav" class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                            <li class="dropdown"><a class="dropdown-toggle" href="@(ViewBag.TopicDropdown.Target)">@(ViewBag.TopicDropdown.Title)</a>
+                                @{ RenderTopicItems(ViewBag.TopicDropdown.NavItems); }
+                            </li>
+                            @if (!string.IsNullOrEmpty(ViewBag.SupportUrl))
+                            {
+                                <li><a target="_blank" href="@(ViewBag.SupportUrl)">Support</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <ul class="social-icons social-icons-sm ml-lg-2 mr-2">
+                        @if (!string.IsNullOrEmpty(ViewBag.TwitterUrl))
+                        {
+                            <li class="social-icons-twitter"><a data-toggle="tooltip" href="@(ViewBag.TwitterUrl)" target="_blank" title="" data-original-title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        }
+                        @if (!string.IsNullOrEmpty(ViewBag.FacebookUrl))
+                        {
+                            <li class="social-icons-facebook"><a data-toggle="tooltip" href="@(ViewBag.FacebookUrl)" target="_blank" title="" data-original-title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        }
+                        @if (!string.IsNullOrEmpty(ViewBag.DribbleUrl))
+                        {
+                            <li class="social-icons-dribbble"><a data-toggle="tooltip" href="@(ViewBag.DribbleUrl)" target="_blank" title="" data-original-title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+        </header>
+
+        <div id="content" role="main">
+
+            <div class="idocs-navigation bg-light">
+                <ul class="nav flex-column ">
+                    @foreach(var navItem in (List<NavItem>) ViewBag.NavItems)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active" href="@("#" + navItem.Target)">@navItem.Title</a>
+                            @if (navItem.NavItems != null && navItem.NavItems.Count > 0)
+                            {
+                                RenderNavItems(navItem.NavItems);
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="idocs-content">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+
+        </div>
+        <!-- Content end -->
+        <!-- Footer
+        ============================ -->
+        <footer id="footer" class="section bg-dark footer-text-light">
+            <div class="container">
+                <ul class="social-icons social-icons-lg social-icons-muted justify-content-center mb-3">
+                    @if (!string.IsNullOrEmpty(ViewBag.TwitterUrl))
+                    {
+                        <li><a data-toggle="tooltip" href="@(ViewBag.TwitterUrl)" target="_blank" title="" data-original-title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.FacebookUrl))
+                    {
+                        <li><a data-toggle="tooltip" href="@(ViewBag.FacebookUrl)" target="_blank" title="" data-original-title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.DribbleUrl))
+                    {
+                        <li><a data-toggle="tooltip" href="@(ViewBag.DribbleUrl)" target="_blank" title="" data-original-title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.GitHubUrl))
+                    {
+                        <li><a data-toggle="tooltip" href="@(ViewBag.GitHubUrl)" target="_blank" title="" data-original-title="GitHub"><i class="fab fa-github"></i></a></li>
+                    }
+                </ul>
+                <p class="text-center">Copyright &copy; @(DateTime.Today.Year) <a href="@(ViewBag.OwningSiteUrl)">@(ViewBag.SiteName)</a>. All Rights Reserved.</p>
+            </div>
+        </footer>
+        <!-- Footer end -->
+
+    </div>
+    <!-- Document Wrapper end -->
+    <!-- Back To Top -->
+    <a id="back-to-top" data-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript
+    ============================ -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Highlight JS -->
+    <script src="/vendor/highlight.js/highlight.min.js"></script>
+    <!-- Easing -->
+    <script src="/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Custom Script -->
+    <script src="/js/theme.js"></script>
+
+</body>
+</html>

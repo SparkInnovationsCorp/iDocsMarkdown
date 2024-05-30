@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/template.css",
+    "inputFile": "wwwroot/css/template.less"
+  },
+  {
+    "outputFile": "wwwroot/sass/style.css",
+    "inputFile": "wwwroot/sass/style.scss"
+  }
+]
